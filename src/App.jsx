@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
+import VideoBlock from './components/VideoBlock'
 import Problem from './components/Problem'
 import About from './components/About'
 import Audience from './components/Audience'
@@ -26,6 +27,7 @@ function App() {
       <Header onOpenSignup={openSignup} />
       <main>
         <Hero onOpenSignup={openSignup} />
+        <VideoBlock />
         <Problem />
         <About />
         <Audience />
