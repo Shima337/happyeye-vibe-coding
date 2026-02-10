@@ -70,14 +70,9 @@ export default function FooterCTA({ onOpenSignup }) {
                 Контакты
               </a>
             </nav>
-            <div className="flex gap-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Telegram">
-                Telegram
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="VK">
-                VK
-              </a>
-            </div>
+            <a href="https://happyai.one" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              happyai.one
+            </a>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
             © {new Date().getFullYear()} <a href="https://happyai.one" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">HappyAI</a>. Курсы вайб-кодинга.

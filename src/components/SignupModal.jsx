@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
-const API_URL = 'http://localhost:3001/api/leads'
+const API_URL = '/api/leads'
 
 export default function SignupModal({ isOpen, onClose }) {
   const [name, setName] = useState('')

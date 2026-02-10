@@ -3,6 +3,7 @@ import cors from 'cors'
 import Database from 'better-sqlite3'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
+import { existsSync } from 'fs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -24,6 +25,12 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+// Раздаём собранный фронтенд (dist/)
+const distPath = join(__dirname, 'dist')
+if (existsSync(distPath)) {
+  app.use(express.static(distPath))
+}
+
 // Сохранить заявку
 app.post('/api/leads', (req, res) => {
   const { name, telegram, phone } = req.body
@@ -44,8 +51,15 @@ app.get('/api/leads', (req, res) => {
   res.json(leads)
 })
 
-const PORT = 3001
-app.listen(PORT, () => {
-  console.log(`API сервер запущен: http://localhost:${PORT}`)
+// SPA fallback — все остальные маршруты отдают index.html
+if (existsSync(distPath)) {
+  app.get('/{*splat}', (req, res) => {
+    res.sendFile(join(distPath, 'index.html'))
+  })
+}
+
+const PORT = process.env.PORT || 3001
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Сервер запущен: http://localhost:${PORT}`)
   console.log(`Заявки: http://localhost:${PORT}/api/leads`)
 })
