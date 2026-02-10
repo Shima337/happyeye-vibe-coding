@@ -13,20 +13,24 @@ export default function VideoBlock() {
     <section id="video" className="py-12 md:py-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Video */}
+          {/* Video — на мобильных явная ширина и min-height, чтобы не схлопывалось */}
           <motion.div
             initial={{ opacity: 0, rotate: -2 }}
             whileInView={{ opacity: 1, rotate: -1 }}
             viewport={{ once: true, margin: '-60px' }}
-            className="relative aspect-[9/16] max-w-sm mx-auto md:mx-0 hand-border overflow-hidden bg-[var(--color-paper-light)]"
-            style={{ boxShadow: '6px 6px 0 rgba(0,0,0,0.08)' }}
+            className="relative w-full max-w-sm mx-auto md:mx-0 hand-border overflow-hidden bg-[var(--color-paper-light)]"
+            style={{
+              boxShadow: '6px 6px 0 rgba(0,0,0,0.08)',
+              aspectRatio: '9 / 16',
+              minHeight: 'min(56.25vw, 340px)',
+            }}
           >
             <iframe
               src={`https://www.youtube.com/embed/${YOUTUBE_EMBED_ID}`}
               title="YouTube Shorts"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
-              className="absolute inset-0 w-full h-full"
+              className="absolute inset-0 w-full h-full border-0"
             />
           </motion.div>
 
