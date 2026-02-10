@@ -23,8 +23,8 @@ export default function Header({ onOpenSignup }) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-18">
-        <a href="#" className="text-xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-          HappyEye
+        <a href="https://happyai.one" target="_blank" rel="noopener noreferrer" className="text-xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+          HappyAI
         </a>
 
         <nav className="hidden md:flex items-center gap-8">

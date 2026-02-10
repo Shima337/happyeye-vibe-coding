@@ -4,8 +4,8 @@ import { Check } from 'lucide-react'
 const plans = [
   {
     name: 'Базовый',
-    price: '9 990',
-    period: '₽',
+    price: '600',
+    period: 'BYN',
     description: 'Для самостоятельного прохождения',
     features: [
       'Доступ ко всем видеоурокам',
@@ -18,8 +18,8 @@ const plans = [
   },
   {
     name: 'Продвинутый',
-    price: '19 990',
-    period: '₽',
+    price: '890',
+    period: 'BYN',
     description: 'С поддержкой и ревью кода',
     features: [
       'Всё из Базового',
@@ -33,8 +33,8 @@ const plans = [
   },
   {
     name: 'Премиум',
-    price: '34 990',
-    period: '₽',
+    price: '1 900',
+    period: 'BYN',
     description: 'Индивидуальный разбор и приоритет',
     features: [
       'Всё из Продвинутого',

@@ -2,8 +2,8 @@ import { useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import VideoBlock from './components/VideoBlock'
+import InstructorBlock from './components/InstructorBlock'
 import Problem from './components/Problem'
-import About from './components/About'
 import Audience from './components/Audience'
 import Results from './components/Results'
 import WhereToVibe from './components/WhereToVibe'
@@ -28,8 +28,8 @@ function App() {
       <main>
         <Hero onOpenSignup={openSignup} />
         <VideoBlock />
+        <InstructorBlock />
         <Problem />
-        <About />
         <Audience />
         <Results />
         <WhereToVibe />

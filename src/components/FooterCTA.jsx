@@ -53,8 +53,8 @@ export default function FooterCTA({ onOpenSignup }) {
       <footer className="py-12 bg-gray-900 text-gray-400">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <a href="#" className="text-xl font-bold text-white">
-              HappyEye
+            <a href="https://happyai.one" target="_blank" rel="noopener noreferrer" className="text-xl font-bold text-white">
+              HappyAI
             </a>
             <nav className="flex flex-wrap items-center justify-center gap-6">
               <a href="#program" className="hover:text-white transition-colors">
@@ -80,7 +80,7 @@ export default function FooterCTA({ onOpenSignup }) {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
-            © {new Date().getFullYear()} HappyEye. Курсы вайб-кодинга.
+            © {new Date().getFullYear()} <a href="https://happyai.one" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">HappyAI</a>. Курсы вайб-кодинга.
           </div>
         </div>
       </footer>

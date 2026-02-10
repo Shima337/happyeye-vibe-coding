@@ -19,7 +19,7 @@ export default function About() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            О компании HappyEye
+            О компании HappyAI
           </h2>
           <p className="mt-4 text-lg text-gray-600">
             Мы — разработчики, которые используют вайб-кодинг в реальных проектах. Не инфоцыгане, а практики: показываем, как делать продукты и зарабатывать на них.
