@@ -28,15 +28,17 @@ export default function VideoBlock() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
-            className="relative aspect-[9/16] max-w-sm mx-auto md:mx-0 rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-gray-900"
+            className="w-full min-w-0 flex justify-center md:justify-start"
           >
-            <iframe
-              src={`https://www.youtube.com/embed/${YOUTUBE_EMBED_ID}`}
-              title="YouTube Shorts"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full"
-            />
+            <div className="relative w-full max-w-sm aspect-[9/16] min-h-[280px] rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-gray-900">
+              <iframe
+                src={`https://www.youtube.com/embed/${YOUTUBE_EMBED_ID}`}
+                title="YouTube Shorts"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+              />
+            </div>
           </motion.div>
 
           {/* Справа — контент */}
