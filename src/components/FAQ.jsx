@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
 
 const faqs = [
   {
@@ -33,18 +32,24 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
-    <section id="faq" className="py-20 md:py-28 bg-white">
+    <section id="faq" className="py-12 md:py-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            Частые вопросы
+          <h2
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: 'Caveat, cursive' }}
+          >
+            Частые <span className="highlight">вопросы</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p
+            className="mt-3 text-lg text-[var(--color-ink-light)]"
+            style={{ fontFamily: 'Neucha, cursive' }}
+          >
             Ответы на то, что спрашивают чаще всего
           </p>
         </motion.div>
@@ -53,24 +58,30 @@ export default function FAQ() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          className="space-y-2"
+          className="space-y-3"
         >
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="rounded-xl border border-gray-200 bg-white overflow-hidden"
+              className="hand-border-thin bg-[var(--color-paper-light)] overflow-hidden"
             >
               <button
                 type="button"
                 onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                className="w-full flex items-center justify-between p-4 md:p-5 text-left font-semibold text-gray-900 hover:bg-gray-50 transition-colors"
+                className="w-full flex items-center justify-between p-4 md:p-5 text-left hover:bg-[var(--color-highlight)]/10 transition-colors"
               >
-                <span className="pr-4">{faq.q}</span>
-                <motion.span
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  className="shrink-0 text-violet-600"
+                <span
+                  className="pr-4 font-bold"
+                  style={{ fontFamily: 'Caveat, cursive', fontSize: '1.2rem' }}
                 >
-                  <ChevronDown size={22} />
+                  {faq.q}
+                </span>
+                <motion.span
+                  animate={{ rotate: openIndex === index ? 45 : 0 }}
+                  className="shrink-0 text-[var(--color-ink)] text-xl"
+                  style={{ fontFamily: 'Caveat, cursive' }}
+                >
+                  +
                 </motion.span>
               </button>
               <AnimatePresence>
@@ -80,9 +91,12 @@ export default function FAQ() {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.25 }}
-                    className="border-t border-gray-100"
+                    className="border-t border-[var(--color-ink)]/10"
                   >
-                    <p className="p-4 md:p-5 pt-3 text-gray-600">
+                    <p
+                      className="p-4 md:p-5 pt-3 text-[var(--color-ink-light)]"
+                      style={{ fontFamily: 'Neucha, cursive' }}
+                    >
                       {faq.a}
                     </p>
                   </motion.div>

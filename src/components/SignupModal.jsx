@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X } from 'lucide-react'
 
 const API_URL = '/api/leads'
 
@@ -57,86 +56,108 @@ export default function SignupModal({ isOpen, onClose }) {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-ink)]/30 backdrop-blur-sm px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.98 }}
-            className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl border border-gray-100"
+            initial={{ opacity: 0, y: 20, rotate: -2 }}
+            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="w-full max-w-md paper-card p-7 bg-[var(--color-paper-light)]"
           >
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-gray-900">Записаться на курс</h2>
+            <div className="flex items-center justify-between mb-5">
+              <h2
+                className="text-2xl font-bold"
+                style={{ fontFamily: 'Caveat, cursive' }}
+              >
+                Записаться на курс ✎
+              </h2>
               <button
                 type="button"
                 onClick={handleClose}
-                className="p-1 text-gray-400 hover:text-gray-700"
+                className="text-[var(--color-ink-faded)] hover:text-[var(--color-ink)] text-2xl leading-none transition-colors"
+                style={{ fontFamily: 'Caveat, cursive' }}
               >
-                <X size={20} />
+                &times;
               </button>
             </div>
 
             {success ? (
               <div className="space-y-4">
-                <p className="text-gray-700">
+                <p style={{ fontFamily: 'Neucha, cursive' }}>
                   Спасибо! Мы получили твою заявку. Свяжемся с тобой в ближайшее время через Telegram
                   или по телефону.
                 </p>
                 <button
                   type="button"
                   onClick={handleClose}
-                  className="w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 transition-all"
+                  className="w-full hand-button-filled"
+                  style={{ fontFamily: 'Caveat, cursive' }}
                 >
-                  Ок
+                  Ок ✓
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    className="block text-sm mb-1"
+                    style={{ fontFamily: 'Caveat, cursive', fontSize: '1.15rem' }}
+                  >
                     Имя
                   </label>
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
+                    className="hand-input"
                     placeholder="Как к тебе обращаться"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    className="block text-sm mb-1"
+                    style={{ fontFamily: 'Caveat, cursive', fontSize: '1.15rem' }}
+                  >
                     Ник в Telegram
                   </label>
                   <input
                     type="text"
                     value={telegram}
                     onChange={(e) => setTelegram(e.target.value)}
-                    className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
+                    className="hand-input"
                     placeholder="@nickname"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    className="block text-sm mb-1"
+                    style={{ fontFamily: 'Caveat, cursive', fontSize: '1.15rem' }}
+                  >
                     Телефон
                   </label>
                   <input
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
-                    placeholder="+7..."
+                    className="hand-input"
+                  placeholder="+375..."
                   />
-                  <p className="mt-1 text-xs text-gray-500">
+                  <p
+                    className="mt-1 text-xs text-[var(--color-ink-faded)]"
+                    style={{ fontFamily: 'Neucha, cursive' }}
+                  >
                     Нужен только для связи по курсу. Спамить не будем.
                   </p>
                 </div>
 
                 {error && (
-                  <p className="text-sm text-red-600">
+                  <p
+                    className="text-sm text-[var(--color-pen-red)]"
+                    style={{ fontFamily: 'Neucha, cursive' }}
+                  >
                     {error}
                   </p>
                 )}
@@ -144,9 +165,10 @@ export default function SignupModal({ isOpen, onClose }) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 disabled:opacity-60 disabled:cursor-not-allowed transition-all"
+                  className="w-full hand-button-filled disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ fontFamily: 'Caveat, cursive' }}
                 >
-                  {loading ? 'Отправляем...' : 'Отправить заявку'}
+                  {loading ? 'Отправляем...' : 'Отправить заявку →'}
                 </button>
               </form>
             )}

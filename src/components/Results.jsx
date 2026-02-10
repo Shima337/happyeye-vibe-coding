@@ -1,13 +1,12 @@
 import { motion } from 'framer-motion'
-import { FolderOpen, Wrench, Lightbulb, Wallet, Upload, Megaphone } from 'lucide-react'
 
 const results = [
-  { icon: FolderOpen, text: 'Реальный проект от идеи до деплоя' },
-  { icon: Wrench, text: 'Навыки: где вайб-кодить, а где писать самому' },
-  { icon: Lightbulb, text: 'Понимание границ AI и архитектуры' },
-  { icon: Wallet, text: 'Идеи монетизации и упаковки продукта' },
-  { icon: Upload, text: 'Деплой и запуск в прод' },
-  { icon: Megaphone, text: 'Базовый маркетинг и продвижение' },
+  { text: 'Реальный проект от идеи до деплоя' },
+  { text: 'Навыки: где вайб-кодить, а где писать самому' },
+  { text: 'Понимание границ AI и архитектуры' },
+  { text: 'Идеи монетизации и упаковки продукта' },
+  { text: 'Деплой и запуск в прод' },
+  { text: 'Базовый маркетинг и продвижение' },
 ]
 
 const container = {
@@ -25,18 +24,24 @@ const item = {
 
 export default function Results() {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-amber-50/30 to-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="py-12 md:py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            Что ты получишь
+          <h2
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: 'Caveat, cursive' }}
+          >
+            Что ты <span className="highlight-green">получишь</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p
+            className="mt-3 text-lg text-[var(--color-ink-light)]"
+            style={{ fontFamily: 'Neucha, cursive' }}
+          >
             Не только кодинг — полный цикл от идеи до заработка
           </p>
         </motion.div>
@@ -46,18 +51,21 @@ export default function Results() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto"
         >
-          {results.map(({ icon: Icon, text }) => (
+          {results.map(({ text }, idx) => (
             <motion.div
               key={text}
               variants={item}
-              className="flex items-center gap-4 p-4 rounded-xl bg-white border border-gray-100 shadow-sm"
+              className="flex items-center gap-3 p-3 hand-border-thin bg-[var(--color-paper-light)]"
             >
-              <div className="w-10 h-10 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
-                <Icon size={20} />
-              </div>
-              <span className="font-medium text-gray-800">{text}</span>
+              <span className="num-circle">{idx + 1}</span>
+              <span
+                className="font-medium"
+                style={{ fontFamily: 'Neucha, cursive', fontSize: '1.05rem' }}
+              >
+                {text}
+              </span>
             </motion.div>
           ))}
         </motion.div>

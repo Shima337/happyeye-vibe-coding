@@ -1,81 +1,114 @@
 import { motion } from 'framer-motion'
-import { Mail, MessageCircle } from 'lucide-react'
 
 export default function FooterCTA({ onOpenSignup }) {
   return (
     <>
-      <section className="py-20 md:py-28 bg-gradient-to-br from-violet-600 to-indigo-700 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.08\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-white"
-          >
-            Готов создавать проекты и зарабатывать?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mt-4 text-lg text-violet-100"
-          >
-            Запишись на курс и получи доступ к урокам и поддержке
-          </motion.p>
+      {/* CTA Section */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20, rotate: -1 }}
+            whileInView={{ opacity: 1, y: 0, rotate: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-8 flex flex-wrap justify-center gap-4"
+            className="paper-card p-8 md:p-12 text-center"
           >
-            <button
-              type="button"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-violet-700 bg-white hover:bg-violet-50 shadow-lg transition-all"
-              onClick={onOpenSignup}
+            <h2
+              className="text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: 'Caveat, cursive' }}
             >
-              <Mail size={20} />
-              Записаться на курс
-            </button>
-            <a
-              href="#"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white border-2 border-white/80 hover:bg-white/10 transition-all"
+              Готов создавать проекты и{' '}
+              <span className="highlight-strong">зарабатывать</span>?
+            </h2>
+            <p
+              className="mt-4 text-lg text-[var(--color-ink-light)]"
+              style={{ fontFamily: 'Neucha, cursive' }}
             >
-              <MessageCircle size={20} />
-              Написать в поддержку
-            </a>
+              Запишись на курс и получи доступ к урокам и поддержке
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <button
+                type="button"
+                className="hand-button-filled text-xl! px-8! py-3!"
+                onClick={onOpenSignup}
+                style={{ fontFamily: 'Caveat, cursive' }}
+              >
+                Записаться на курс ✎
+              </button>
+              <a
+                href="#"
+                className="hand-button text-xl! px-8! py-3!"
+                style={{ fontFamily: 'Caveat, cursive', textDecoration: 'none' }}
+              >
+                Написать в поддержку →
+              </a>
+            </div>
+
+            {/* Decorative doodle */}
+            <div className="mt-6 flex justify-center">
+              <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M5 15 Q 20 5, 35 15 T 65 15 T 95 15 T 115 15"
+                  stroke="var(--color-ink-faded)"
+                  strokeWidth="1.5"
+                  fill="none"
+                  strokeLinecap="round"
+                  opacity="0.4"
+                />
+              </svg>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      <footer className="py-12 bg-gray-900 text-gray-400">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      {/* Footer */}
+      <footer className="py-10 border-t-2 border-[var(--color-ink)]/10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <a href="https://happyai.one" target="_blank" rel="noopener noreferrer" className="text-xl font-bold text-white">
+            <a
+              href="https://happyai.one"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl font-bold"
+              style={{ fontFamily: 'Caveat, cursive' }}
+            >
               HappyAI
             </a>
             <nav className="flex flex-wrap items-center justify-center gap-6">
-              <a href="#program" className="hover:text-white transition-colors">
-                Программа
-              </a>
-              <a href="#pricing" className="hover:text-white transition-colors">
-                Тарифы
-              </a>
-              <a href="#faq" className="hover:text-white transition-colors">
-                FAQ
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Контакты
-              </a>
+              {['Программа', 'Тарифы', 'FAQ', 'Контакты'].map((label) => (
+                <a
+                  key={label}
+                  href={`#${label.toLowerCase()}`}
+                  className="text-[var(--color-ink-light)] hover:text-[var(--color-ink)] transition-colors"
+                  style={{ fontFamily: 'Neucha, cursive' }}
+                >
+                  {label}
+                </a>
+              ))}
             </nav>
-            <a href="https://happyai.one" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+            <a
+              href="https://happyai.one"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--color-ink-faded)] hover:text-[var(--color-ink)] transition-colors"
+              style={{ fontFamily: 'Neucha, cursive' }}
+            >
               happyai.one
             </a>
           </div>
-          <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
-            © {new Date().getFullYear()} <a href="https://happyai.one" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">HappyAI</a>. Курсы вайб-кодинга.
+          <div
+            className="mt-6 pt-6 border-t border-[var(--color-ink)]/10 text-center text-sm text-[var(--color-ink-faded)]"
+            style={{ fontFamily: 'Neucha, cursive' }}
+          >
+            &copy; {new Date().getFullYear()}{' '}
+            <a
+              href="https://happyai.one"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[var(--color-ink)] transition-colors"
+            >
+              HappyAI
+            </a>
+            . Курсы вайбкодинга.
           </div>
         </div>
       </footer>

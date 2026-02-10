@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { Check, X } from 'lucide-react'
 
 const suitable = [
   'Лендинги и одностраничники',
@@ -20,18 +19,25 @@ const notSuitable = [
 
 export default function WhereToVibe() {
   return (
-    <section id="where" className="py-20 md:py-28 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="where" className="py-12 md:py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            Где можно вайб-кодить, а где нельзя
+          <h2
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: 'Caveat, cursive' }}
+          >
+            Где можно <span className="highlight-green">вайб-кодить</span>,{' '}
+            а где <span className="highlight-pink">нельзя</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p
+            className="mt-3 text-lg text-[var(--color-ink-light)]"
+            style={{ fontFamily: 'Neucha, cursive' }}
+          >
             Ключевое отличие курса — мы честно показываем границы инструмента
           </p>
         </motion.div>
@@ -40,37 +46,51 @@ export default function WhereToVibe() {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-2 gap-6"
         >
-          <div className="p-6 md:p-8 rounded-2xl bg-green-50 border-2 border-green-200">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-green-500 text-white flex items-center justify-center">
-                <Check size={22} />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900">Подходит</h3>
-            </div>
+          {/* Suitable */}
+          <div
+            className="hand-border-green p-6 md:p-8 bg-[#f0fdf4]"
+          >
+            <h3
+              className="text-2xl font-bold mb-5 flex items-center gap-2"
+              style={{ fontFamily: 'Caveat, cursive' }}
+            >
+              ✓ Подходит
+            </h3>
             <ul className="space-y-3">
-              {suitable.map((item) => (
-                <li key={item} className="flex items-center gap-3 text-gray-700">
-                  <Check size={20} className="text-green-600 shrink-0" />
-                  <span>{item}</span>
+              {suitable.map((text) => (
+                <li
+                  key={text}
+                  className="flex items-start gap-3 text-[var(--color-ink-light)]"
+                  style={{ fontFamily: 'Neucha, cursive', fontSize: '1.05rem' }}
+                >
+                  <span className="text-[var(--color-pen-green)] font-bold text-lg shrink-0">✓</span>
+                  <span>{text}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="p-6 md:p-8 rounded-2xl bg-red-50 border-2 border-red-200">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-red-500 text-white flex items-center justify-center">
-                <X size={22} />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900">Не подходит</h3>
-            </div>
+          {/* Not suitable */}
+          <div
+            className="hand-border-red p-6 md:p-8 bg-[#fef2f2]"
+          >
+            <h3
+              className="text-2xl font-bold mb-5 flex items-center gap-2"
+              style={{ fontFamily: 'Caveat, cursive' }}
+            >
+              ✗ Не подходит
+            </h3>
             <ul className="space-y-3">
-              {notSuitable.map((item) => (
-                <li key={item} className="flex items-center gap-3 text-gray-700">
-                  <X size={20} className="text-red-600 shrink-0" />
-                  <span>{item}</span>
+              {notSuitable.map((text) => (
+                <li
+                  key={text}
+                  className="flex items-start gap-3 text-[var(--color-ink-light)]"
+                  style={{ fontFamily: 'Neucha, cursive', fontSize: '1.05rem' }}
+                >
+                  <span className="text-[var(--color-pen-red)] font-bold text-lg shrink-0">✗</span>
+                  <span>{text}</span>
                 </li>
               ))}
             </ul>

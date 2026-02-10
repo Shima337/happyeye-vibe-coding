@@ -1,15 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+  --font-body: "Neucha", cursive;
+  --font-note: "Patrick Hand", cursive;
+  --color-paper: #f5efe6;
+  --color-paper-light: #faf6ef;
+  --color-paper-dark: #e8dfd3;
+  --color-paper-line: #c9bfb0;
+  --color-ink: #1e293b;
+  --color-ink-light: #475569;
+  --color-ink-faded: #64748b;
+  --color-pen-blue: #1e3a5f;
+  --color-pen-red: #b91c1c;
+  --color-pen-green: #15803d;
+  --color-highlight: #fef08a;
+  --color-highlight-strong: #fde047;
+  --color-marker-pink: #fecdd3;
+  --color-marker-blue: #bfdbfe;
+  --color-marker-green: #bbf7d0;
 }
 
 :root {
-  font-family: var(--font-sans);
-  line-height: 1.6;
+  font-family: var(--font-body);
+  line-height: 1.7;
   font-weight: 400;
-  color: #1a1a2e;
-  background-color: #fafafa;
+  color: var(--color-ink);
+  background-color: var(--color-paper);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -18,15 +35,387 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 5rem;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-paper);
+  /* Subtle paper texture */
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(0,0,0,0.01) 0%, transparent 70%),
+    radial-gradient(ellipse at 80% 20%, rgba(0,0,0,0.015) 0%, transparent 60%);
 }
 
 #root {
   min-height: 100vh;
+}
+
+/* ===== HANDWRITTEN UTILITIES ===== */
+
+/* Yellow highlighter effect — like a real marker */
+.highlight {
+  background: linear-gradient(
+    180deg,
+    transparent 45%,
+    var(--color-highlight) 45%,
+    var(--color-highlight) 85%,
+    transparent 85%
+  );
+  padding: 0 4px;
+  margin: 0 -2px;
+  border-radius: 2px;
+}
+
+.highlight-strong {
+  background: linear-gradient(
+    180deg,
+    transparent 35%,
+    var(--color-highlight-strong) 35%,
+    var(--color-highlight-strong) 90%,
+    transparent 90%
+  );
+  padding: 0 6px;
+  margin: 0 -3px;
+  border-radius: 3px;
+}
+
+.highlight-pink {
+  background: linear-gradient(
+    180deg,
+    transparent 45%,
+    var(--color-marker-pink) 45%,
+    var(--color-marker-pink) 85%,
+    transparent 85%
+  );
+  padding: 0 4px;
+}
+
+.highlight-blue {
+  background: linear-gradient(
+    180deg,
+    transparent 45%,
+    var(--color-marker-blue) 45%,
+    var(--color-marker-blue) 85%,
+    transparent 85%
+  );
+  padding: 0 4px;
+}
+
+.highlight-green {
+  background: linear-gradient(
+    180deg,
+    transparent 45%,
+    var(--color-marker-green) 45%,
+    var(--color-marker-green) 85%,
+    transparent 85%
+  );
+  padding: 0 4px;
+}
+
+/* Hand-drawn border — asymmetric border-radius trick */
+.hand-border {
+  border: 2.5px solid var(--color-ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.hand-border-thin {
+  border: 1.5px solid var(--color-ink-light);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.hand-border-blue {
+  border: 2px solid var(--color-pen-blue);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.hand-border-red {
+  border: 2px solid var(--color-pen-red);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.hand-border-green {
+  border: 2px solid var(--color-pen-green);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+/* Sketchy underline */
+.sketch-underline {
+  text-decoration: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8'%3E%3Cpath d='M1 5 Q 30 1, 60 5 T 120 4 T 200 5' stroke='%231e293b' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 200px 8px;
+  padding-bottom: 6px;
+}
+
+/* Paper card — looks like a sheet of paper */
+.paper-card {
+  background: var(--color-paper-light);
+  border: 2px solid var(--color-ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow:
+    4px 4px 0px rgba(0,0,0,0.08),
+    8px 8px 0px rgba(0,0,0,0.03);
+  position: relative;
+}
+
+.paper-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 1px solid rgba(0,0,0,0.03);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  pointer-events: none;
+}
+
+/* Sticky note style */
+.sticky-note {
+  background: #fff9c4;
+  border: none;
+  box-shadow:
+    2px 2px 6px rgba(0,0,0,0.12),
+    0px 0px 1px rgba(0,0,0,0.08);
+  transform: rotate(-1deg);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.sticky-note-pink {
+  background: #fce4ec;
+  transform: rotate(1deg);
+}
+
+.sticky-note-blue {
+  background: #e3f2fd;
+  transform: rotate(-0.5deg);
+}
+
+.sticky-note-green {
+  background: #e8f5e9;
+  transform: rotate(0.8deg);
+}
+
+/* Lined paper background */
+.lined-paper {
+  background-color: var(--color-paper-light);
+  background-image:
+    linear-gradient(transparent 31px, var(--color-paper-line) 31px, var(--color-paper-line) 32px, transparent 32px);
+  background-size: 100% 32px;
+}
+
+/* Notebook with margin line */
+.notebook-paper {
+  background-color: var(--color-paper-light);
+  background-image:
+    linear-gradient(90deg, transparent 60px, #e8b4b8 60px, #e8b4b8 61px, transparent 61px),
+    linear-gradient(transparent 31px, var(--color-paper-line) 31px, var(--color-paper-line) 32px, transparent 32px);
+  background-size: 100% 32px;
+}
+
+/* Doodle circle around text */
+.doodle-circle {
+  position: relative;
+}
+
+.doodle-circle::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -12px;
+  right: -12px;
+  bottom: -8px;
+  border: 2.5px solid var(--color-ink);
+  border-radius: 50% 45% 50% 48% / 45% 50% 48% 50%;
+  transform: rotate(-2deg);
+  pointer-events: none;
+}
+
+/* Arrow pointing down-right */
+.hand-arrow-down::after {
+  content: '↗';
+  font-size: 2rem;
+  font-family: var(--font-hand);
+  display: inline-block;
+  margin-left: 0.5rem;
+  transform: rotate(0deg);
+}
+
+/* Button that looks hand-drawn */
+.hand-button {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  font-weight: 600;
+  background: transparent;
+  border: 2.5px solid var(--color-ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-ink);
+  position: relative;
+}
+
+.hand-button:hover {
+  background: var(--color-highlight);
+  transform: translateY(-1px);
+}
+
+.hand-button-filled {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  font-weight: 600;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hand-button-filled:hover {
+  background: var(--color-pen-blue);
+  border-color: var(--color-pen-blue);
+  transform: translateY(-1px);
+}
+
+/* Checkbox/checkmark drawn style */
+.hand-check::before {
+  content: '✓';
+  font-family: var(--font-hand);
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.hand-cross::before {
+  content: '✗';
+  font-family: var(--font-hand);
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  color: var(--color-pen-red);
+}
+
+/* Tape effect for sticky notes */
+.tape::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 80px;
+  height: 24px;
+  background: rgba(255, 235, 180, 0.7);
+  border: 1px solid rgba(200, 180, 140, 0.3);
+}
+
+/* Scribble divider */
+.scribble-divider {
+  border: none;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 12'%3E%3Cpath d='M0 6 Q 25 2, 50 6 T 100 6 T 150 6 T 200 6 T 250 6 T 300 6 T 350 6 T 400 6' stroke='%231e293b' fill='none' stroke-width='1.5' stroke-linecap='round' opacity='0.3'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 400px 12px;
+  margin: 2rem 0;
+}
+
+/* Number circle (for lists) */
+.num-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 50%;
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Input field — handwritten style */
+input.hand-input,
+textarea.hand-input {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--color-ink-light);
+  border-radius: 0;
+  padding: 0.5rem 0.25rem;
+  outline: none;
+  color: var(--color-ink);
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+input.hand-input:focus,
+textarea.hand-input:focus {
+  border-bottom-color: var(--color-pen-blue);
+}
+
+input.hand-input::placeholder,
+textarea.hand-input::placeholder {
+  color: var(--color-ink-faded);
+  opacity: 0.5;
+}
+
+/* Star bullet */
+.star-bullet::before {
+  content: '★';
+  margin-right: 0.5rem;
+  color: var(--color-pen-blue);
+}
+
+/* Page curl effect */
+.page-curl {
+  position: relative;
+}
+
+.page-curl::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(
+    225deg,
+    var(--color-paper) 50%,
+    var(--color-paper-dark) 50%
+  );
+  box-shadow: -2px -2px 4px rgba(0,0,0,0.05);
+  border-radius: 0 0 0 8px;
+}
+
+/* Smooth scrolling sections */
+section {
+  position: relative;
+}
+
+/* Custom scrollbar for paper feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-paper-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-faded);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-light);
 }

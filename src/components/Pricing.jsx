@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { Check } from 'lucide-react'
 
 const plans = [
   {
@@ -28,7 +27,7 @@ const plans = [
       'Помощь с деплоем и архитектурой',
       'Доступ 6 месяцев',
     ],
-    cta: 'Записаться',
+    cta: 'Записаться →',
     popular: true,
   },
   {
@@ -52,7 +51,7 @@ const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.12 },
   },
 }
 
@@ -63,18 +62,24 @@ const item = {
 
 export default function Pricing({ onOpenSignup }) {
   return (
-    <section id="pricing" className="py-20 md:py-28 bg-gradient-to-b from-violet-50/50 to-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="pricing" className="py-12 md:py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            Тарифы
+          <h2
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: 'Caveat, cursive' }}
+          >
+            <span className="highlight-strong">Тарифы</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p
+            className="mt-3 text-lg text-[var(--color-ink-light)]"
+            style={{ fontFamily: 'Neucha, cursive' }}
+          >
             Выбери формат под свои цели
           </p>
         </motion.div>
@@ -90,39 +95,80 @@ export default function Pricing({ onOpenSignup }) {
             <motion.div
               key={plan.name}
               variants={item}
-              className={`relative rounded-2xl border-2 p-6 md:p-8 bg-white ${
+              className={`relative p-6 md:p-8 bg-[var(--color-paper-light)] ${
                 plan.popular
-                  ? 'border-violet-500 shadow-xl shadow-violet-500/20 md:scale-[1.02]'
-                  : 'border-gray-200'
+                  ? 'hand-border md:scale-[1.03]'
+                  : 'hand-border-thin'
               }`}
+              style={{
+                boxShadow: plan.popular
+                  ? '6px 6px 0 rgba(0,0,0,0.1)'
+                  : '3px 3px 0 rgba(0,0,0,0.05)',
+              }}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-violet-600 text-white text-sm font-semibold">
-                  Популярный
+                <div
+                  className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[var(--color-ink)] text-[var(--color-paper)] text-sm font-bold whitespace-nowrap"
+                  style={{
+                    fontFamily: 'Caveat, cursive',
+                    fontSize: '1rem',
+                    borderRadius: '255px 15px 225px 15px / 15px 225px 15px 255px',
+                  }}
+                >
+                  ★ Популярный
                 </div>
               )}
-              <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
-              <p className="mt-2 text-gray-600 text-sm">{plan.description}</p>
-              <div className="mt-6 flex items-baseline gap-1">
-                <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
-                <span className="text-gray-600">{plan.period}</span>
+
+              <h3
+                className="text-2xl font-bold"
+                style={{ fontFamily: 'Caveat, cursive' }}
+              >
+                {plan.name}
+              </h3>
+              <p
+                className="mt-1 text-[var(--color-ink-light)] text-sm"
+                style={{ fontFamily: 'Neucha, cursive' }}
+              >
+                {plan.description}
+              </p>
+
+              <div className="mt-5 flex items-baseline gap-1">
+                <span
+                  className="text-4xl font-bold"
+                  style={{ fontFamily: 'Caveat, cursive' }}
+                >
+                  {plan.price}
+                </span>
+                <span
+                  className="text-[var(--color-ink-light)]"
+                  style={{ fontFamily: 'Neucha, cursive' }}
+                >
+                  {plan.period}
+                </span>
               </div>
-              <ul className="mt-6 space-y-3">
+
+              <ul className="mt-5 space-y-2">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-gray-700">
-                    <Check size={18} className="text-violet-600 shrink-0" />
+                  <li
+                    key={feature}
+                    className="flex items-start gap-2 text-[var(--color-ink-light)]"
+                    style={{ fontFamily: 'Neucha, cursive', fontSize: '1rem' }}
+                  >
+                    <span className="text-[var(--color-pen-green)] shrink-0">✓</span>
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
+
               <button
                 type="button"
-                className={`mt-8 block w-full py-3 rounded-xl font-semibold text-center transition-all ${
+                className={`mt-6 block w-full py-3 text-center transition-all cursor-pointer ${
                   plan.popular
-                    ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white hover:from-violet-700 hover:to-indigo-700 shadow-lg shadow-violet-500/25'
-                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                    ? 'hand-button-filled'
+                    : 'hand-button'
                 }`}
                 onClick={onOpenSignup}
+                style={{ fontFamily: 'Caveat, cursive', fontSize: '1.2rem' }}
               >
                 {plan.cta}
               </button>

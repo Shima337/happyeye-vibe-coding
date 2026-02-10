@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { label: 'О курсе', href: '#program' },
   { label: 'Для кого', href: '#audience' },
-  { label: 'Где вайб-кодить', href: '#where' },
+  { label: 'Инструменты', href: '#where' },
   { label: 'Тарифы', href: '#pricing' },
   { label: 'FAQ', href: '#faq' },
 ]
@@ -21,18 +20,25 @@ export default function Header({ onOpenSignup }) {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/80">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-18">
-        <a href="https://happyai.one" target="_blank" rel="noopener noreferrer" className="text-xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-paper)]/95 backdrop-blur-sm border-b-2 border-[var(--color-ink)]/10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+        <a
+          href="https://happyai.one"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-[var(--font-hand)] text-2xl font-bold text-[var(--color-ink)] hover:text-[var(--color-pen-blue)] transition-colors"
+          style={{ fontFamily: 'Caveat, cursive' }}
+        >
           HappyAI
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-gray-600 hover:text-violet-600 font-medium transition-colors"
+              className="text-[var(--color-ink-light)] hover:text-[var(--color-ink)] transition-colors"
+              style={{ fontFamily: 'Neucha, cursive', fontSize: '1.1rem' }}
             >
               {link.label}
             </a>
@@ -42,20 +48,22 @@ export default function Header({ onOpenSignup }) {
         <div className="hidden md:block">
           <button
             type="button"
-            className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 shadow-lg shadow-violet-500/25 transition-all"
+            className="hand-button text-base! px-5! py-2!"
             onClick={handleOpenSignup}
+            style={{ fontFamily: 'Caveat, cursive', fontSize: '1.2rem' }}
           >
-            Записаться
+            Записаться ✎
           </button>
         </div>
 
         <button
           type="button"
-          className="md:hidden p-2 text-gray-600 hover:text-violet-600"
+          className="md:hidden p-2 text-[var(--color-ink)]"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Меню"
+          style={{ fontFamily: 'Caveat, cursive', fontSize: '1.5rem' }}
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? '✕' : '☰'}
         </button>
       </div>
 
@@ -65,25 +73,27 @@ export default function Header({ onOpenSignup }) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-gray-200 bg-white"
+            className="md:hidden border-t-2 border-[var(--color-ink)]/10 bg-[var(--color-paper)]"
           >
-            <nav className="flex flex-col p-4 gap-2">
+            <nav className="flex flex-col p-4 gap-1">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="py-2 text-gray-600 hover:text-violet-600 font-medium"
+                  className="py-2 text-[var(--color-ink-light)] hover:text-[var(--color-ink)]"
+                  style={{ fontFamily: 'Neucha, cursive', fontSize: '1.2rem' }}
                   onClick={() => setMobileOpen(false)}
                 >
-                  {link.label}
+                  — {link.label}
                 </a>
               ))}
               <button
                 type="button"
-                className="mt-2 py-3 rounded-xl font-semibold text-center text-white bg-gradient-to-r from-violet-600 to-indigo-600"
+                className="mt-3 hand-button-filled text-base!"
                 onClick={handleOpenSignup}
+                style={{ fontFamily: 'Caveat, cursive' }}
               >
-                Записаться
+                Записаться ✎
               </button>
             </nav>
           </motion.div>

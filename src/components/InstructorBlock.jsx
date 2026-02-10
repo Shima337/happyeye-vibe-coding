@@ -1,127 +1,107 @@
 import { motion } from 'framer-motion'
-import { Briefcase, Code2, Rocket, Users, TrendingUp, Award } from 'lucide-react'
 
 const highlights = [
-  {
-    icon: Code2,
-    title: 'Разработчик',
-    text: 'Пишет код каждый день — от бэкенда до фронта. Знает, как устроены реальные системы изнутри.',
-  },
-  {
-    icon: Briefcase,
-    title: 'Продуктовый опыт',
-    text: 'Запускал продукты с нуля: от идеи и MVP до первых платящих пользователей.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Бизнес-мышление',
-    text: 'Понимает, как код превращается в деньги. Монетизация, упаковка, маркетинг — не пустые слова.',
-  },
-  {
-    icon: Users,
-    title: 'Работа с командами',
-    text: 'Руководил разработкой в проектах для крупных компаний. Умеет объяснять просто и по делу.',
-  },
-  {
-    icon: Rocket,
-    title: 'Вайб-кодинг в проде',
-    text: 'Использует AI-инструменты в реальной работе с 2023 года. Знает их границы и возможности.',
-  },
-  {
-    icon: Award,
-    title: 'Ментор и преподаватель',
-    text: 'Обучил десятки студентов. Фокус на результате: не просто «понял», а «сделал и запустил».',
-  },
+  { title: 'Разработчик', text: 'Пишет код каждый день — от бэкенда до фронта.' },
+  { title: 'Продуктовый опыт', text: 'Запускал продукты с нуля: от идеи до первых платящих пользователей.' },
+  { title: 'Бизнес-мышление', text: 'Понимает, как код превращается в деньги.' },
+  { title: 'Работа с командами', text: 'Руководил разработкой в проектах для крупных компаний.' },
+  { title: 'Вайб-кодинг в проде', text: 'Использует AI-инструменты в реальной работе с 2023 года.' },
+  { title: 'Ментор', text: 'Обучил десятки студентов. Фокус — «сделал и запустил».' },
 ]
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08 },
-  },
-}
-
-const item = {
-  hidden: { opacity: 0, x: -12 },
-  show: { opacity: 1, x: 0 },
-}
 
 export default function InstructorBlock() {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-violet-50/50 to-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Слева — текст про Антона */}
+    <section className="py-12 md:py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+          {/* Left — about Anton */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 text-violet-700 text-sm font-medium mb-5">
+            <span
+              className="inline-block highlight-pink px-3 py-1 text-lg mb-4"
+              style={{ fontFamily: 'Caveat, cursive' }}
+            >
               Преподаватель курса
-            </div>
+            </span>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-snug">
+            <h2
+              className="text-3xl md:text-4xl font-bold leading-snug"
+              style={{ fontFamily: 'Caveat, cursive' }}
+            >
               Антон —{' '}
-              <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+              <span className="sketch-underline">
                 разработчик, продуктолог и ментор
               </span>
             </h2>
 
-            <p className="mt-4 text-gray-600 text-lg">
-              Редкое сочетание: человек, который и код пишет, и продукт понимает, и умеет объяснить так, чтобы ты сразу пошёл делать.
+            <p
+              className="mt-4 text-lg text-[var(--color-ink-light)]"
+              style={{ fontFamily: 'Neucha, cursive' }}
+            >
+              Редкое сочетание: человек, который и код пишет, и продукт понимает,
+              и умеет объяснить так, чтобы ты сразу пошёл делать.
             </p>
 
-            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-50 border border-amber-200">
-              <span className="text-amber-600 font-bold text-lg whitespace-nowrap">1&nbsp;час</span>
-              <span className="text-gray-700 text-sm">— столько заняло создание этого сайта с нуля. Весь проект сделан вайб-кодингом.</span>
+            {/* Time badge */}
+            <div className="mt-4 inline-block sticky-note" style={{ transform: 'rotate(-1deg)' }}>
+              <span
+                className="text-xl font-bold"
+                style={{ fontFamily: 'Caveat, cursive' }}
+              >
+                1 час
+              </span>
+              <span
+                className="text-sm ml-2"
+                style={{ fontFamily: 'Neucha, cursive' }}
+              >
+                — столько заняло создание этого сайта. Весь проект — вайб-кодинг.
+              </span>
             </div>
 
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: '-40px' }}
-              className="mt-6 grid sm:grid-cols-2 gap-3"
-            >
-              {highlights.map(({ icon: Icon, title, text }) => (
-                <motion.div
+            {/* Highlights grid */}
+            <div className="mt-6 grid sm:grid-cols-2 gap-3">
+              {highlights.map(({ title, text }) => (
+                <div
                   key={title}
-                  variants={item}
-                  className="flex items-start gap-3 p-3 rounded-xl bg-white border border-gray-100 shadow-sm"
+                  className="hand-border-thin p-3 bg-[var(--color-paper-light)]"
                 >
-                  <div className="mt-0.5 w-8 h-8 rounded-lg bg-violet-100 text-violet-600 flex items-center justify-center shrink-0">
-                    <Icon size={16} />
+                  <div
+                    className="font-bold text-sm"
+                    style={{ fontFamily: 'Caveat, cursive', fontSize: '1.15rem' }}
+                  >
+                    ✦ {title}
                   </div>
-                  <div>
-                    <div className="font-semibold text-gray-900 text-sm">{title}</div>
-                    <div className="text-gray-600 text-xs mt-0.5 leading-relaxed">{text}</div>
+                  <div
+                    className="text-[var(--color-ink-light)] text-sm mt-0.5"
+                    style={{ fontFamily: 'Neucha, cursive' }}
+                  >
+                    {text}
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* Справа — фото Антона */}
+          {/* Right — photo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, rotate: 2 }}
+            whileInView={{ opacity: 1, rotate: 1 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ delay: 0.1 }}
             className="flex justify-center md:justify-end"
           >
-            <div className="relative max-w-lg w-full">
-              <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100">
-                <img
-                  src="/anton.png"
-                  alt="Антон — преподаватель курса"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-              {/* Декоративные элементы */}
-              <div className="absolute -bottom-3 -left-3 w-24 h-24 bg-violet-300/20 rounded-full blur-2xl" />
-              <div className="absolute -top-3 -right-3 w-20 h-20 bg-amber-300/20 rounded-full blur-2xl" />
+            <div
+              className="relative max-w-lg w-full hand-border overflow-hidden bg-[var(--color-paper-light)]"
+              style={{ boxShadow: '5px 5px 0 rgba(0,0,0,0.06)' }}
+            >
+              <img
+                src="/anton.png"
+                alt="Антон — преподаватель курса"
+                className="w-full h-auto object-cover"
+              />
             </div>
           </motion.div>
         </div>

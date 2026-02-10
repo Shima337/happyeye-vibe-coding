@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { User } from 'lucide-react'
 
 const team = [
   {
@@ -34,19 +33,25 @@ const item = {
 
 export default function Team() {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-amber-50/30 to-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="py-12 md:py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            Преподаватели
+          <h2
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: 'Caveat, cursive' }}
+          >
+            <span className="highlight">Преподаватели</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            Практикующие разработчики HappyAI — не теоретики, а те, кто каждый день пишет код и использует AI
+          <p
+            className="mt-3 text-lg text-[var(--color-ink-light)]"
+            style={{ fontFamily: 'Neucha, cursive' }}
+          >
+            Практикующие разработчики — не теоретики, а те, кто каждый день пишет код и использует AI
           </p>
         </motion.div>
 
@@ -55,20 +60,42 @@ export default function Team() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid md:grid-cols-3 gap-8"
+          className="grid md:grid-cols-3 gap-6"
         >
-          {team.map(({ name, role, experience }) => (
+          {team.map(({ name, role, experience }, idx) => (
             <motion.div
               key={name}
               variants={item}
-              className="text-center"
+              className="paper-card p-6 text-center"
+              style={{ transform: `rotate(${idx === 0 ? -1 : idx === 2 ? 1 : 0}deg)` }}
             >
-              <div className="w-24 h-24 rounded-2xl bg-gray-200 flex items-center justify-center mx-auto mb-4 overflow-hidden">
-                <User size={40} className="text-gray-500" />
+              {/* Hand-drawn avatar placeholder */}
+              <div className="w-20 h-20 mx-auto mb-4 hand-border flex items-center justify-center bg-[var(--color-paper)]">
+                <span
+                  className="text-3xl"
+                  style={{ fontFamily: 'Caveat, cursive' }}
+                >
+                  {name.charAt(0)}
+                </span>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900">{name}</h3>
-              <p className="text-violet-600 font-medium mt-1">{role}</p>
-              <p className="mt-2 text-sm text-gray-600">{experience}</p>
+              <h3
+                className="text-xl font-bold"
+                style={{ fontFamily: 'Caveat, cursive' }}
+              >
+                {name}
+              </h3>
+              <p
+                className="text-[var(--color-pen-blue)] font-medium mt-1"
+                style={{ fontFamily: 'Caveat, cursive', fontSize: '1.1rem' }}
+              >
+                {role}
+              </p>
+              <p
+                className="mt-2 text-sm text-[var(--color-ink-light)]"
+                style={{ fontFamily: 'Neucha, cursive' }}
+              >
+                {experience}
+              </p>
             </motion.div>
           ))}
         </motion.div>

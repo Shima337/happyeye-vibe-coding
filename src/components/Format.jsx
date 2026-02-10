@@ -1,24 +1,23 @@
 import { motion } from 'framer-motion'
-import { Video, Laptop, Code2, MessageCircle } from 'lucide-react'
 
 const formats = [
   {
-    icon: Video,
+    icon: '📹',
     title: 'Видеоуроки',
     description: 'Короткие уроки по модулям. Смотри в своём темпе, пересматривай сложные места.',
   },
   {
-    icon: Laptop,
+    icon: '💻',
     title: 'Практика на реальном проекте',
-    description: 'Делаешь свой продукт от идеи до деплоя. Не абстрактные таски — то, что можно показать и монетизировать.',
+    description: 'Делаешь свой продукт от идеи до деплоя. Не абстрактные таски — то, что можно монетизировать.',
   },
   {
-    icon: Code2,
+    icon: '🔍',
     title: 'Ревью кода',
     description: 'Разбор твоего кода от менторов: архитектура, стиль, что улучшить.',
   },
   {
-    icon: MessageCircle,
+    icon: '💬',
     title: 'Чат с менторами',
     description: 'Вопросы по курсу и проекту — в общем чате и в личке. Ответы в течение 24 часов.',
   },
@@ -39,18 +38,24 @@ const item = {
 
 export default function Format() {
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="py-12 md:py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            Как проходит обучение
+          <h2
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: 'Caveat, cursive' }}
+          >
+            Как проходит <span className="highlight-blue">обучение</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p
+            className="mt-3 text-lg text-[var(--color-ink-light)]"
+            style={{ fontFamily: 'Neucha, cursive' }}
+          >
             Формат, который даёт результат, а не просто сертификат
           </p>
         </motion.div>
@@ -60,19 +65,30 @@ export default function Format() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
         >
-          {formats.map(({ icon: Icon, title, description }) => (
+          {formats.map(({ icon, title, description }, idx) => (
             <motion.div
               key={title}
               variants={item}
-              className="p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:border-violet-200 hover:shadow-lg hover:shadow-violet-500/5 transition-all"
+              className="paper-card p-5 text-center"
+              style={{
+                transform: `rotate(${idx % 2 === 0 ? -0.8 : 0.8}deg)`,
+              }}
             >
-              <div className="w-12 h-12 rounded-xl bg-violet-100 text-violet-600 flex items-center justify-center mb-4">
-                <Icon size={24} />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-              <p className="mt-2 text-gray-600 text-sm">{description}</p>
+              <div className="text-3xl mb-3">{icon}</div>
+              <h3
+                className="text-xl font-bold"
+                style={{ fontFamily: 'Caveat, cursive' }}
+              >
+                {title}
+              </h3>
+              <p
+                className="mt-2 text-sm text-[var(--color-ink-light)]"
+                style={{ fontFamily: 'Neucha, cursive' }}
+              >
+                {description}
+              </p>
             </motion.div>
           ))}
         </motion.div>
